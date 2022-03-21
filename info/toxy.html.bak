@@ -5,7 +5,7 @@
 </head> 
 	<body> 
 		<center>
-			<a href="https://sasudio.github.io/"><img src="images/clockImg.jpg" width="1000" height="300 border="0"" 
+			<a href="https://sasudio.github.io/"><img src="images/toxic.png" width="1000" height="300 border="0"" 
 			alt="displayImg error"></a>
 		</center>
 		
@@ -15,7 +15,7 @@
 		
 		<center>
 		<div>
-		<div id="current_date_time_block" style="height: 120px; font-size: 128pt;"
+		<div id="current_date_time_block" style="height: 30px; font-size: 18pt;"
 		></div>
 
 <script type="text/javascript">
