@@ -58,8 +58,17 @@
 		<div id='content' style="height: 120px; font-size: 32pt; border: 1px solid #999; background-color: #5D64F0;" >
 			<p><center>фуджитека звуков</center></p>
 		</div> 
-		<div id='content' style="height: 120px; width: min; font-size: 24pt; border: 10px solid #999; background-color: #FA6188;" >
+		<div id='content' style=" font-size: 24pt; border: 10px solid #999; background-color: #FA6188;" >
+		<p>2. Fuj777 - ringtone   
+		<audio controls>
+			<source src="audio/ringtone.mp3" type="audio/mpeg" ></p>
 			<p>1. Fuj777 - classic    
+			
+			<center>
+			<a href="https://sasudio.github.io/"><img src="images/new_track.jpg" " 
+			alt="error loading image"></a>
+		</center>
+			
 		<audio controls>
 			<source src="audio/classic.mp3" type="audio/mpeg" ></p>
 		</audio>
