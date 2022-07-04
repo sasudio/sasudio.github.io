@@ -6,8 +6,7 @@
 	<body>
 		<style>
    body {
-    background: #3EC3F0 url(images/bg.jpg);
-    color: #fff; 
+    background: #3EC3F0 url(images/bg.jpg); 
    }
   </style>
 		<center>
@@ -24,7 +23,7 @@
 		<div id="current_date_time_block"></div>
 
 <script type="text/javascript">
-      
+    
     function zero_first_format(value)
     {
         if (value < 10)
@@ -58,8 +57,8 @@
 		<p>2. Fuj777 - ringtone   
 		<audio controls>
 			<source src="audio/ringtone.mp3" type="audio/mpeg" ></p>
-			<a href="audio/ringtone.mp3" download >скачать </a>"ringtone, только для андрея: "
-			<a href="txts/ringtone_readme.txt" download >readme.txt </a>
+			<a href="audio/ringtone.mp3" download >скачать </a>ringtone, только для андрея: 
+			<a href="txts/ringtone_readme.txt">readme.txt </a>
 			</div> 
 			<div id='content' style=" font-size: 24pt; border: 10px solid #999; background-color: #FA6188;" >
 			<center>

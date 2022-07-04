@@ -6,8 +6,7 @@
 	<body>
 		<style>
    body {
-    background: #3EC3F0 url(images/bg.jpg); /* Цвет фона и путь к файлу */
-    color: #fff; /* Цвет текста */
+    background: #3EC3F0 url(images/bg.jpg); 
    }
   </style>
 		<center>
@@ -25,8 +24,6 @@
 
 <script type="text/javascript">
     
-    /* функция добавления ведущих нулей */
-    /* (если число меньше десяти, перед числом добавляем ноль) */
     function zero_first_format(value)
     {
         if (value < 10)
@@ -36,7 +33,6 @@
         return value;
     }
 
-    /* функция получения текущей даты и времени */
     function date_time()
     {
         var current_datetime = new Date();
@@ -50,7 +46,6 @@
         return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
     }
 
-    /* выводим текущую дату и время на сайт в блок с id "current_date_time_block" */
     document.getElementById('current_date_time_block').innerHTML = date_time();
 </script>
 		
@@ -63,6 +58,7 @@
 		<audio controls>
 			<source src="audio/ringtone.mp3" type="audio/mpeg" ></p>
 			<a href="audio/ringtone.mp3" download >скачать </a>ringtone
+			
 			</div> 
 			<div id='content' style=" font-size: 24pt; border: 10px solid #999; background-color: #FA6188;" >
 			<center>
