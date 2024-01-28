@@ -1,0 +1,49 @@
+html, body{margin:0;padding:0;}
+.main {
+margin:0 auto; /* Центрируем блоки */
+width:100%; /* Задаем ширину 100%, чтобы сделать ее резиновой */
+ /*max-width:700px; Устанавливаем максимальную ширину */
+}
+.fill_inline div{
+display:inline-block; /* Делаем блоки по горизонтали */
+display: -moz-inline-stack; /* Для FireFox 2, тот же самый, что и inline-block */
+vertical-align:top; /* Выравниваем их сверху */
+/* min-height: 8vw; */
+zoom: 1;
+*display : inline;
+/* height: fit-content; */
+}
+
+div.fill_inline{font-size:0;} /* Ставим родителю значение 0, чтобы убрать отступы у блоков*/
+.fill_left-block{
+background:#295066;
+width:20%; /*Задаем ширину в процентах чтобы сделать ее резиновой*/
+min-height: 1vw;
+}
+.fill_mid_block{
+background:#295066;
+width:65%;
+height: 1vw;
+}
+.fill_right-block{
+background:#0A2433;
+width:5%;
+min-height: 8vw;
+}
+
+.fill_rm-link{
+    padding-left: 2%;
+    font-size: 5vw;
+    color:#A3BDCC; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+/* 
+@media (max-width:600px){
+.inline div{
+display:block; 
+width:100%; 
+height:100px;
+}
+} */

@@ -1,0 +1,66 @@
+html, body {margin: 0; height: 100%; overflow-x: hidden}
+@font-face {
+  font-family: 'Vox'; /*a name to be used later*/
+  src: url("fonts/vox_regular15.ttf") format('truetype');/* url('http://domain.example/fonts/font.ttf'); URL to font */
+}
+  .vox{        
+    font-family: "Vox";
+    color: #0A2433;  
+    
+  }
+  /* .vox-big{
+    text-shadow: 0px 0px 6px #CCECFF;
+  } */
+  .shad-nw{    
+    text-shadow: -0.05vw -0.05vw 0.1vw #CCECFF;
+  }
+  .shad-se{    
+    text-shadow: 0.05vw 0.05vw 0.1vw #CCECFF;
+  }
+  .strk-l{
+    -webkit-text-stroke-width: 0.1vw;
+    -webkit-text-stroke-color: #A3BDCC;  
+  }
+  .strk-d{
+    -webkit-text-stroke-width: 0.1vw;
+    -webkit-text-stroke-color: #295066;  
+  }
+  .centr{
+    text-align: center;
+  }
+  .left-align{
+    padding-left: 2%;
+  }
+
+#splash-text{
+  writing-mode: vertical-rl;
+text-orientation: mixed;
+}
+#base-text{
+    font-size: 4vw;
+  }  
+#small-text{
+  font-size: 2vw;
+} 
+#random-block-buttom{
+  color: #CCECFF;
+  background-color: #295066;
+  font-size: 1vw;
+} 
+#title-text{
+  font-size: 3.8vw;
+}  
+#random-block{
+  color: #CCECFF;
+  background-color: #295066;
+  font-size: 1vw;
+  
+  /* width: 500px;
+  height: 300px;
+  
+  
+  text-align: center;
+  line-height: 300px;
+  font-family: monospace; */
+}
+ 
