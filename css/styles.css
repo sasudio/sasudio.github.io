@@ -1,7 +1,7 @@
 html, body {margin: 0; height: 100%; overflow-x: hidden}
 @font-face {
   font-family: 'Vox'; /*a name to be used later*/
-  src: url("fonts/vox_regular15.ttf") format('truetype');/* url('http://domain.example/fonts/font.ttf'); URL to font */
+  src: url("../fonts/vox_regular15.ttf") format('truetype');/* url('http://domain.example/fonts/font.ttf'); URL to font */
 }
   .vox{        
     font-family: "Vox";
@@ -62,5 +62,30 @@ text-orientation: mixed;
   text-align: center;
   line-height: 300px;
   font-family: monospace; */
+}
+
+.wrapper{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.link_wrapper{
+  position: relative;
+}
+
+a{
+  border-radius: 1%;  
+  display: block;
+  border: 1px solid #5C8399;
+  transition: all .35s;}
+
+a:hover{
+  border: 1px solid #0A2433;
+  background: transparent;
+  background: linear-gradient(to right, #0A2433, #5C8399);
+  border-top-color: #A3BDCC;
+  border-bottom-color: #0A2433;
 }
  
