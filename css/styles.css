@@ -54,14 +54,6 @@ text-orientation: mixed;
   color: #CCECFF;
   background-color: #295066;
   font-size: 1vw;
-  
-  /* width: 500px;
-  height: 300px;
-  
-  
-  text-align: center;
-  line-height: 300px;
-  font-family: monospace; */
 }
 
 .wrapper{
@@ -78,11 +70,11 @@ text-orientation: mixed;
 a{
   border-radius: 1%;  
   display: block;
-  border: 1px solid #5C8399;
+  border: 0.01vw solid #5C8399;
   transition: all .35s;}
 
 a:hover{
-  border: 1px solid #0A2433;
+  border: 0.01vw solid #0A2433;
   background: transparent;
   background: linear-gradient(to right, #0A2433, #5C8399);
   border-top-color: #A3BDCC;

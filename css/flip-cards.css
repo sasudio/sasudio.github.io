@@ -1,32 +1,56 @@
-.block{
-    position: relative;
-    
+.btn div { /* makes every small div 50% the size of the previous */
+  width: 33.3%;
+  height: 100%;
 }
-
-.card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 300px;
-  margin: -150px;
+.btn {
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  width: 98%;
+  height: 27.5%;
+}
+.b1 div { /* makes every small div 50% the size of the previous */
+  width: 33.3%;
+  height: 100%;
+}
+.b1 {
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  width: 98%;
+  height: 10%;
+}
+.b2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
   float: left;
-  perspective: 500px;
+  perspective: 50vw;
+}
+.b2 div { /* makes every small div 50% the size of the previous */
+  width: 100%;
+  height: 100%;
 }
 
 .content {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-
+  height: 100%;  
   transition: transform 1s;
   transform-style: preserve-3d;
 }
 
-.card:hover .content {
+.b2:hover .content {
   transform: rotateY( 180deg ) ;
   transition: transform 0.5s;
+  
+  border: 0.01vw solid #0A2433;
+  background: transparent;
+  background: linear-gradient(to right, #0A2433, #5C8399);
+  border-top-color: #A3BDCC;
+  border-bottom-color: #0A2433;
 }
 
 .front,
@@ -34,17 +58,17 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background: white;
-  line-height: 300px;
-  color: #03446A;
   text-align: center;
-  font-size: 60px;
-  border-radius: 5px;
   backface-visibility: hidden;
 }
 
 .back {
-  background: #03446A;
-  color: white;
+  color: #A3BDCC;
   transform: rotateY( 180deg );
 }
+.back{
+  border-radius: 1%;  
+  display: block;
+  transition: all .35s;}
+
+ 

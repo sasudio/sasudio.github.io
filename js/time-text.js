@@ -31,5 +31,5 @@ document.getElementById('current_date_time_block').innerHTML = date_time();
 
     setInterval(function () {
     document.getElementById('current_date_time_block').innerHTML = date_time();
-}, 100);
+}, 99);
 
