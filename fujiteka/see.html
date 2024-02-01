@@ -1,29 +1,372 @@
 <!DOCTYPE html>
-<html> 
-<head> 
-	<title>Фуджитека</title> 
-</head> 
-	<body>
-		<style>
-   body {
-    background: #3EC3F0 url(images/bg.jpg); 
-   }
-  </style>
-		<center>
-			<a href="https://sasudio.github.io/"><img src="images/fujiteka.gif" width="535" height="230 border="0"" 
-			alt="error loading image"></a>
-		</center>
-		
-		<div 
-		id='rect' style="height: 10px; font-size: 32pt; border: 1px solid #999; background-color: #5D64F0;" >			
-		</div> 		
-		
-		<center>
-		<div>
-		<div id="current_date_time_block"></div>
-
-<script type="text/javascript">
+<html>
+<link rel="stylesheet" href="../css/fujiteka.css">
+<link rel="stylesheet" href="../css/voxfont.css">
+<link rel="stylesheet" href="../css/shapes.css">
+<head>
+  <title>Аудиоплеер</title>
+</head>
+<body>
+    <div style="min-height: 8px"></div>
+    <div class="vox white" style="font-size: 44pt">
+        <div class="menu-row">
+            <div class="standart-block menu-block mb-left">
+                <a href="https://sasudio.github.io/" style="text-decoration:none; color:#ffffff;">Go back</a>
+            </div>            
+            <div class="standart-block menu-block mb-right">Fujiy4net Audio Player</div>
+            <!-- <div class="standart-block menu-block mb-right">Premium</div> -->
+        </div>
+    </div>
+    <div style="min-height: 8px"></div>
+    <div class="standart-block">
+        <div class="vox" style="font-size: 34pt">
+            <div id="libList"></div>
+        </div>
+    </div>
+    <div style="min-height: 8px"></div>
+    <div class="standart-block">
+        <div class="vox" style="font-size: 34pt" id="flfather">
+            <div id="fileList"></div>
+        </div>
+    </div>
+    <div style="min-height: 8px"></div>
+    <div class="standart-block">
+        <div class="content-row" id="c-r">
+            <div class="content-list" id="c-l">
+                <div class="vox white pic" style="font-size: 24pt">
+                    <div>album</div>
+                    <div>image</div><br>
+                </div>
+            </div>
+            <div class="content-player" id="c-p">
+                <div class="player vox white">
+                    <div style="font-size: 36pt">
+                        <span id="track-name">Select track</span>
+                        <span id="track-duration">0:00</span>
+                    </div>
+                    <div style="min-height: 44pt"></div>                    
+                    <audio id="audio" src="audio/Fuj777 - KASKADE.wav"></audio>
+                    <div class="full-slider-area" >  
+                        <div class="left-slider-area" id="track"></div>
+                        <input type="range" id="seek" min="0" max="100" value="0">
+                    </div>
+                    <div style="min-height: 16pt"></div>  
+                    
+                    <div id="debug-text" style="font-size: 0px;">text</div>
+                    <div class="main-contols">
+                        <div class="main-controls-left">
+                            <div id="outer">
+                                <div id="inner"> <!-- <a href="audio/Fuj777 - 15 - trance.mp3" download>Download track</a> -->
+                                </div>
+                            </div>       
+                        </div>
+                        <div class="main-controls-right">
+                            <div class="controls">                       
+                                <haf class="trl">
+                                    <div class="in-trl">
+                                        <div style="font-size: 18pt">
+                                            <span id="volume-text">Volume</span>
+                                            <span id="volume-value">50%</span>
+                                        </div>
+                                        <div style="min-height: 24pt"></div>
+                                        <div class="full-slider-area" >  
+                                            <div class="left-slider-area" style="width: 50%;" id="volume-slider"></div>
+                                            <input type="range" id="volume" min="0" max="100" value="50">
+                                        </div>
+                                    </div>
+                                </haf>
+                                <haf class="trl">
+                                    <div class="in-trl">
+                                        <div style="font-size: 18pt">
+                                            <span id="speed-text">Speed</span>
+                                            <span id="speed-value">1x</span>
+                                        </div>
+                                        <div style="min-height: 24pt"></div>
+                                        <div class="full-slider-area" >  
+                                            <div class="left-slider-area" style="width: 47.36%;" id="speed-slider"></div>
+                                            <input type="range" id="speed" min="0.1" max="2" step="0.1" value="1">
+                                        </div>   
+                                    </div>                         
+                                </haf>
+                            </div>  
+                        </div> 
+                    </div>                 
+                </div>
+            </div>            
+        </div>
+    </div>
     
+    <div style="min-height: 8px"></div>
+    <div class="standart-block">
+            <div class="audio-controls">
+        
+                <div class="audio-controls-block">
+                    <div class="prev" id="prev-btn"></div>
+                </div>
+                <div class="audio-controls-block">
+                    <div class="play-shape" id="play-btn"></div>
+                    
+                    <div class="pause-shape" id="pause-btn"></div>
+                    <div class="stub-shape" id="stub-btn"></div>
+                </div>    
+                <div class="audio-controls-block">
+                    <div class="next" id="next-btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const playBtn = document.getElementById("play-btn");
+        const pauseBtn = document.getElementById("pause-btn");
+        const stubBtn = document.getElementById("stub-btn");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        playBtn.addEventListener("click", function() {                       
+            pauseBtn.style.visibility = "visible";
+            playBtn.style.animation="opacity1 0.3s linear 1";   
+            pauseBtn.style.animation="opacity2 0.3s linear 1";
+            setTimeout(() => {playBtn.style.visibility = "collapse";}, 250);   
+            setTimeout(() => {stubBtn.style.visibility = "visible"; }, 240);                                 
+        });
+        stubBtn.addEventListener("click", function() {            
+            playBtn.style.animation="opacity3 0.3s linear 1";   
+            pauseBtn.style.animation="opacity1 0.3s linear 1";           
+            playBtn.style.visibility = "visible";
+            stubBtn.style.visibility = "collapse";
+            setTimeout(() => {pauseBtn.style.visibility = "collapse";}, 250);                        
+        });
+        var pi = true;
+        prevBtn.addEventListener("click", function() {
+            if (pi){
+                prevBtn.style.animation="skew-x1 0.3s linear 1";
+                pi = false;
+            }
+            else{
+                prevBtn.style.animation="skew-x2 0.3s linear 1";
+                pi = true;
+            }            
+        });
+        var ni = true;
+        nextBtn.addEventListener("click", function() {
+            if (ni){
+                nextBtn.style.animation="skew-x1 0.3s linear 1";
+                ni = false;
+            }
+            else{
+                nextBtn.style.animation="skew-x2 0.3s linear 1";
+                ni = true;
+            }            
+        });
+    </script>
+  <script>
+    const audio = document.getElementById("audio");
+    const playButton = document.getElementById("play-btn");
+    const pauseButton = document.getElementById("stub-btn");
+    const volumeControl = document.getElementById("volume");
+    const speedControl = document.getElementById("speed");
+    const seekControl = document.getElementById("seek");
+
+    const leftSliderArea = document.getElementById("track");
+    const volSlider = document.getElementById("volume-slider");
+    const spdSlider = document.getElementById("speed-slider");
+    const dText = document.getElementById("debug-text");
+    const durationText = document.getElementById("track-duration");
+    const spdText = document.getElementById("speed-value");
+    const volText = document.getElementById("volume-value");
+
+
+    playButton.addEventListener("click", function() {
+        var text = document.getElementById('track-name')
+        if (text.textContent == 'Select track') {
+            document.getElementById('track-name').innerHTML = 'Fuj777, KASKADE';
+            audio.src = 'audio/Fuj777 - KASKADE.wav';
+        }
+      audio.play();
+    });
+
+    pauseButton.addEventListener("click", function() {
+      audio.pause();
+    });
+
+    volumeControl.addEventListener("input", function() {
+      audio.volume = volumeControl.value / 100;
+      volSlider.style.width = volumeControl.value + '%'
+      volText.innerHTML = volumeControl.value + '%'
+    });
+
+    speedControl.addEventListener("input", function() {
+      audio.playbackRate = speedControl.value;   
+      spdText.innerHTML = audio.playbackRate + 'x'
+      console.log(speedControl.value, audio.playbackRate);  
+      spdSlider.style.width = ((speedControl.value - 0.1) / (2.0 - 0.1) * 100) + '%' 
+    });
+
+    audio.addEventListener("timeupdate", function() {      
+      audio.playbackRate = speedControl.value;            
+      seekControl.value = (audio.currentTime / audio.duration) * 100;
+      leftSliderArea.style.width = seekControl.value + '%'      
+      volSlider.style.width = volumeControl.value + '%'
+      if (isNaN(audio.duration)) {
+        seekControl.value = 0;
+        leftSliderArea.style.width = '0%'
+        }
+      else{
+        if (audio.currentTime > 599){
+            sec = new Date(Math.round(audio.currentTime) * 1000).toISOString().slice(14, 19);
+        }
+        else{
+            sec = new Date(Math.round(audio.currentTime) * 1000).toISOString().slice(15, 19);
+        }
+        durationText.innerHTML = sec;
+        }
+    });
+
+    seekControl.addEventListener("input", function() {
+      audio.currentTime = (seekControl.value * audio.duration) / 100;
+      dText.innerHTML = seekControl.value + '%'
+      leftSliderArea.style.width = seekControl.value + '%'
+    });
+    var Fuj777 = ['audio/Duj778 - 2922.mp3',
+                        'audio/Fuj777 - 2024.mp3',
+                        'audio/Fuj777 - 2014.mp3',                        
+                        'audio/Fuj777 - CH2.mp3',
+                        'audio/Fuj777 - SVC.mp3',
+                        'audio/Fuj777 - 5AVG.mp3',                        
+                        'audio/Fuj777 - classic.mp3',                        
+                        'audio/Fuj777 - MiniSeries.mp3',                        
+                        'audio/Fuj777 - EuroTrack.mp3',
+                        'audio/Fuj777 - First Track.mp3',
+                        'audio/Fuj777 - Trance1.mp3',
+                        'audio/Fuj777 - Trance2.mp3',
+                        'audio/Fuj777 - Trance3.mp3',                        
+                        'audio/Fuj777 - Tripple7onAir Vol.1.mp3',
+                        'audio/Fuj777 - Tripple7onAir Vol.3.mp3',
+                        'audio/Fuj777 - Last Track.mp3',
+                        'audio/Fuj777 - KASKADE.wav'];
+    
+    var Andl_Egorod = ['audio/Andl Egorod & Unnamed - Samokat otzv.mp3',
+                        'audio/Andl Egorod - Fifty50.mp3',
+                        'audio/Andl Egorod - MCHS.mp3',
+                        'audio/Andl Egorod - LES (debut song).wav',
+                        'audio/Andl Approved - Bolnichny Bit.ogg'];
+
+    function displayLib() {
+        var fileList = document.getElementById('libList');
+        var audioFiles = ['SWITCH LIBRARY - DJ Fuj777 - @Fujiya_sama',
+                        'SWITCH LIBRARY - Andl Egorod - @andrei8480'];
+        
+        var iter = 0 //shitcode FIXME Aaaa
+      audioFiles.forEach(function(file) {
+        iter++
+        var fileName = file.split('/').pop().replace(/\.[^/.]+$/, '');
+        var audioName = fileName
+        fileName = fileName.split('-');
+        var index = 0;
+        var listItem = document.createElement('div'); 
+        listItem.classList.add('list-row')
+        var splitItem = document.createElement('div'); 
+        splitItem.classList.add('splitter-row')
+        var childItem;
+        var artistName;
+        var songName;
+        fileName.forEach(function(element) {
+            index++
+            if (index==1){
+                childItem = document.createElement('span');
+                childItem.classList.add('artist-meta')        
+                childItem.textContent = element;
+                artistName = element
+            }
+            if (index==2){
+                childItem = document.createElement('span');
+                childItem.classList.add('song-name-meta')         
+                childItem.textContent = element;
+                songName = element
+            }   
+            if (index==3){
+                childItem = document.createElement('span');
+                childItem.classList.add('tag-meta')        
+                childItem.textContent = element;
+                artistName = element
+            }   
+            listItem.appendChild(childItem);
+        });
+        if (iter == 1){
+            listItem.addEventListener('click', function() {  
+                document.getElementById('fileList').remove();
+                var fl = document.createElement('div'); 
+                fl.setAttribute("id", 'fileList');
+                document.getElementById('flfather').appendChild(fl);
+                displayAudioFiles(Fuj777); 
+                console.log('click')           
+                });
+            }
+        else{
+            listItem.addEventListener('click', function() {  
+                document.getElementById('fileList').remove();
+                var fl = document.createElement('div'); 
+                fl.setAttribute("id", 'fileList');
+                document.getElementById('flfather').appendChild(fl);
+                displayAudioFiles(Andl_Egorod); 
+                console.log('click')           
+                });
+        }
+        fileList.appendChild(listItem);
+        fileList.appendChild(splitItem);
+        
+        });
+    }
+    displayLib();
+    
+    function displayAudioFiles(lib) {
+      var fileList = document.getElementById('fileList');
+      var audioFiles = lib;
+      audioFiles.forEach(function(file) {
+        var fileName = file.split('/').pop().replace(/\.[^/.]+$/, '');
+        var audioName = fileName
+        fileName = fileName.split('-');
+        var index = 0;
+        var listItem = document.createElement('div'); 
+        listItem.classList.add('list-row')
+        var splitItem = document.createElement('div'); 
+        splitItem.classList.add('splitter-row')
+        var childItem;
+        var artistName;
+        var songName;
+        fileName.forEach(function(element) {
+            index++
+            if (index==1){
+                childItem = document.createElement('span');
+                childItem.classList.add('artist-meta')        
+                childItem.textContent = element;
+                artistName = element
+            }
+            else{
+                childItem = document.createElement('span');
+                childItem.classList.add('song-name-meta')         
+                childItem.textContent = element;
+                songName = element
+            }            
+           
+            listItem.appendChild(childItem);
+        });
+        listItem.addEventListener('click', function() {
+                document.getElementById('track-name').innerHTML = songName + ' - ' + artistName;
+                document.getElementById('audio').src = file;                
+                                      
+                pauseBtn.style.visibility = "visible";
+                playBtn.style.animation="opacity1 0.3s linear 1";   
+                pauseBtn.style.animation="opacity2 0.3s linear 1";
+                setTimeout(() => {playBtn.style.visibility = "collapse";}, 250);   
+                setTimeout(() => {stubBtn.style.visibility = "visible"; }, 240); 
+                audio.play();          
+            });
+        fileList.appendChild(listItem);
+        fileList.appendChild(splitItem);
+        
+        });
+    }
     function zero_first_format(value)
     {
         if (value < 10)
@@ -32,119 +375,54 @@
         }
         return value;
     }
-
-    function date_time()
-    {
-        var current_datetime = new Date();
-        var day = zero_first_format(current_datetime.getDate());
-        var month = zero_first_format(current_datetime.getMonth()+1);
-        var year = current_datetime.getFullYear();
-        var hours = zero_first_format(current_datetime.getHours());
-        var minutes = zero_first_format(current_datetime.getMinutes());
-        var seconds = zero_first_format(current_datetime.getSeconds());
-
-        return day+"."+month+"."+year+" "+hours+":"+minutes+":"+seconds;
-    }
-
-    document.getElementById('current_date_time_block').innerHTML = date_time();
-		
-</script>	  
-		<div id='content' style="height: 20px; font-size: 32pt; border: 4px solid #999" >
-		</div> 		
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>DJ Fuj - Fujiy4s4m4 2024   
-			<audio controls>
-				<source src="audio/2024.mp3" type="audio/mpeg" ></p>
-				<a href="audio/2024.mp3" download >====> СКАЧАТЬ !!!! <====</a>				
-				</div> 
-		<div id='content' style=" font-size: 24pt; border: 0px solid #999; background-color: #FFFFFF;" >
-			<center>
-			<a href="https://sasudio.github.io/"><img src="images/new_track.jpg" " 
-			alt="error loading image"></a>
-		</center>
-			</div> 
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - SVC   
-			<audio controls>
-				<source src="audio/Fuj777 - svc1.mp3" type="audio/mpeg" ></p>			
-				</div> 
-
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - first track  
-			<audio controls>
-				<source src="audio/Fuj777 - first track.mp3" type="audio/mpeg" ></p>			
-				</div> 
-
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - 5avg   
-			<audio controls>
-				<source src="audio/Fuj777 - 5avg.mp3" type="audio/mpeg" ></p>			
-				</div> 
+    
+    displayAudioFiles(Fuj777);
 
 
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - 2014   
-			<audio controls>
-				<source src="audio/Fuj777 - 2014.mp3" type="audio/mpeg" ></p>			
-				</div> 
+    // function textAlignFont() { 
+    //     divElement = document.getElementById("outer");
 
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - Everything is demo
-			<audio controls>
-				<source src="audio/Fuj777 - Everything is demo.mp3" type="audio/mpeg" ></p>			
-				</div> 
+    //     height = divElement.offsetHeight;
 
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>Duj778 - 2922   
-			<audio controls>
-				<source src="audio/Duj778 - 2922.mp3" type="audio/mpeg" ></p>			
-				</div> 
+    //     var el = document.getElementById('outer');
+    //     var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+    //     var fontSize = parseFloat(style);
+                 
+    //     while (height>70){
+    //         fontSize = fontSize - 1
+    //         el.style.fontSize = fontSize + 'px';
+    //         divElement = document.getElementById("outer");
+    //         height = divElement.offsetHeight;
+    //     }
+    // }
+    // textAlignFont()
+    // window.onresize = textAlignFont;
 
-		 
+    // function picAlignWidth() { 
+    //     pic = document.getElementById("c-l");
+    //     plr = document.getElementById("c-p");
+    //     mainW = document.getElementById("c-r")
 
-		
-			<div id='content' style=" font-size: 24pt; border: 10px solid #999; background-color: #FA6188;" >
-			<p>Fuj777 - classic  			
-		<audio controls>
-			<source src="audio/classic.mp3" type="audio/mpeg" ></p>
-		</audio>
-		<div id='content' style=" font-size: 24pt; border: 5px solid #999; background-color: #FA6188;" >
-			<p>klip.wav  
-			<audio controls>
-				<source src="audio/klip.wav" type="audio/mpeg" ></p>			
-				</div>
-		</div> 
-		
-		
-<!--
-			
-		<div id='content' style=" font-size: 16pt; border: 1px solid #999; background-color: #5D64F0;" >
-			<p><center>
-			<div class="article">
-        <h3>Заголовок статьи</h3>
-        <p>Первый абзац</p>
-        <p>Второй абзац</p>
-    </div>
-			<script>
-			
-			for (var i = 0; i < 100; i++) { 
-				var articleDiv = document.querySelector("div.article");
-				var elem = document.createElement("h2");
-				var elemText = document.createTextNode(i);
-				elem.appendChild(elemText);
-				articleDiv.appendChild(elem);
-			}
-			</script>
-			</center></p>
-			
-		</div>
-		
-		
-		</center>
-	-->
-		<center>
-			<div id='footer'; style="font-size: 14pt; left: 0; bottom: 0; width: 100%; height: 3%">
-			© SFdev   2022 - 2024</div> 
-		</center>
-	</body> 
+    //     console.log(getComputedStyle(mainW).width,   getComputedStyle(mainW).height)   
+    //     h = parseFloat(getComputedStyle(mainW).height)
+    //     w = parseFloat(getComputedStyle(mainW).width)
+    //     pic.style.width = (h*100/w) + '%';
+    //     plr.style.width = 100 - pic.style.width
+    //     console.log(pic.style.width)
+    //     // var el = document.getElementById('outer');
+    //     // var style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+    //     // var fontSize = parseFloat(style);
+                
+    //     // console.log(fontSize)    
+    //     // while (height>70){
+    //     //     fontSize = fontSize - 1
+    //     //     el.style.fontSize = fontSize + 'px';
+    //     //     divElement = document.getElementById("outer");
+    //     //     height = divElement.offsetHeight;
+    //     // }
+    // }
+    // picAlignWidth()
+    // window.onresize = picAlignWidth;
+  </script>
+</body>
 </html>
