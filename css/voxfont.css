@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Vox'; /*a name to be used later*/
+    src: url("../fonts/vox_regular15.ttf") format('truetype');/* url('http://domain.example/fonts/font.ttf'); URL to font */
+  }
+
+  .vox{        
+    font-family: "Vox";   
+  }
+
+  .white{
+    color: #ffffff; 
+  }
