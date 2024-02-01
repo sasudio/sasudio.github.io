@@ -251,10 +251,15 @@
                         'audio/Andl Egorod - LES (debut song).wav',
                         'audio/Andl Approved - Bolnichny Bit.ogg'];
 
+    var Reka = ['audio/REKA - Sochi.mp3',
+                'audio/REKA - Gorod v probkah.mp3',
+                'audio/REKA - Patriotka.mp3'];
+
     function displayLib() {
         var fileList = document.getElementById('libList');
         var audioFiles = ['SWITCH LIBRARY - DJ Fuj777 - @Fujiya_sama',
-                        'SWITCH LIBRARY - Andl Egorod - @andrei8480'];
+                        'SWITCH LIBRARY - Andl Egorod - @andrei8480',
+                        'SWITCH LIBRARY - reka - @ochupivo'];
         
         var iter = 0 //shitcode FIXME Aaaa
       audioFiles.forEach(function(file) {
@@ -302,13 +307,23 @@
                 console.log('click')           
                 });
             }
-        else{
+        if (iter == 2){
             listItem.addEventListener('click', function() {  
                 document.getElementById('fileList').remove();
                 var fl = document.createElement('div'); 
                 fl.setAttribute("id", 'fileList');
                 document.getElementById('flfather').appendChild(fl);
                 displayAudioFiles(Andl_Egorod); 
+                console.log('click')           
+                });
+        }
+        if (iter == 3){
+            listItem.addEventListener('click', function() {  
+                document.getElementById('fileList').remove();
+                var fl = document.createElement('div'); 
+                fl.setAttribute("id", 'fileList');
+                document.getElementById('flfather').appendChild(fl);
+                displayAudioFiles(Reka); 
                 console.log('click')           
                 });
         }
