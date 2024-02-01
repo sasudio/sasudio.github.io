@@ -54,13 +54,15 @@
 
 .full-slider-area {    
     position: relative;
-    background: #131313;
+    background: #573434;
+    border-radius: 1000px 1000px;
 }
 .left-slider-area {   
     position: relative; 
     width: 0%;
     height: 40px;
     background: #ffffff;
+    border-radius: 1000px 1000px;
 }
 
 .player {
