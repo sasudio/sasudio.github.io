@@ -205,21 +205,7 @@
       spdSlider.style.width = ((speedControl.value - 0.1) / (2.0 - 0.1) * 100) + '%' 
     });
 
-    audio.addEventListener("timeupdate", function() { 
-      if(isNaN(audio.duration)){
-        console.log("nan")
-      }
-      else{
-        if(audio.duration == audio.currentTime){
-        playBtn.style.animation ="opacity3 0.3s linear 1";
-        pauseBtn.style.animation = "opacity1 0.3s linear 1";
-        playBtn.style.visibility ="visible";
-        stubBtn.style.visibility =" collapse";
-        setTimeout(() => {pauseButton.style.visibility="collapse";},250);
-      } else {
-        console.log(audio.duration , audio.currentTime);
-      }   
-    }   
+    audio.addEventListener("timeupdate", function() {
       audio.playbackRate = speedControl.value;            
       seekControl.value = (audio.currentTime / audio.duration) * 100;
       leftSliderArea.style.width = seekControl.value + '%'      
