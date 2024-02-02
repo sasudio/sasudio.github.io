@@ -29,8 +29,7 @@
         <div class="content-row" id="c-r">
             <div class="content-list" id="c-l">
                 <div class="vox white pic" style="font-size: 24pt">
-                    <div>album</div>
-                    <div>image</div><br>
+                    <img src="images/1.png" id="album" alt="image" style=" max-width: 100%; max-height: 100%;">
                 </div>
             </div>
             <div class="content-player" id="c-p">
@@ -178,6 +177,8 @@
     const spdText = document.getElementById("speed-value");
     const volText = document.getElementById("volume-value");
 
+    const albImg = document.getElementById("album");
+
 
     playButton.addEventListener("click", function() {
         var text = document.getElementById('track-name')
@@ -308,7 +309,8 @@
                 fl.setAttribute("id", 'fileList');
                 document.getElementById('flfather').appendChild(fl);
                 displayAudioFiles(Fuj777); 
-                console.log('click')           
+                console.log('click') ;
+                albImg.src = "images/1.png"  ;        
                 });
             }
         if (iter == 2){
@@ -318,7 +320,8 @@
                 fl.setAttribute("id", 'fileList');
                 document.getElementById('flfather').appendChild(fl);
                 displayAudioFiles(Andl_Egorod); 
-                console.log('click')           
+                console.log('click')  ;
+                albImg.src = "images/2.png"  ;           
                 });
         }
         if (iter == 3){
@@ -328,7 +331,8 @@
                 fl.setAttribute("id", 'fileList');
                 document.getElementById('flfather').appendChild(fl);
                 displayAudioFiles(Reka); 
-                console.log('click')           
+                console.log('click')   ;
+                albImg.src = "images/3.png"  ;          
                 });
         }
         fileList.appendChild(listItem);
