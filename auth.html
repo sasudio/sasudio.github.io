@@ -3,49 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>osu! Авторизация</title>
+    <title>osu! Discord linking</title>
     <style>
+        @font-face {
+            font-family: 'CustomFont'; /* Name your font family */
+            src: url('fonts/fa-solid-900.woff2'); /* Locate the .ttf file within your directory*/
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'CustomFont', sans-serif;
+            text-shadow: rgb(94, 94, 94) 2px 0 10px;
+            color:#fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
+            background-color: #1c1719;
         }
         .container {
             text-align: center;
-            background-color: #fff;
+            background-color: #382e32;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(110, 110, 110, 0.1);
         }
         input {
             padding: 10px;
+            color:#fff;
             width: 300px;
             margin-bottom: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            background-color: #151515;
+            border: 1px solid #ff7791;
+            
+            text-shadow: rgb(114, 206, 223) 2px 0 5px;
         }
         button {
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #47b4eb;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
+            text-shadow: rgb(28, 28, 28) 2px 0 5px;
         }
         button:hover {
-            background-color: #45a049;
+            background-color: #89c4e2;
+        }
+        .disctxt {
+            font-family: 'Arial', sans-serif;
         }
     </style>
+    <style>
+        .bottom-three {
+           margin-bottom: 1cm;
+        }
+      </style>
+      
+      
+      
 </head>
 <body>
 
 <div class="container">
-    <h2>osu! Код авторизации</h2>
-    <p>Скопируйте этот код и вставьте его в чат Discord.</p>
+    <h1>o s u !</h1>
+    <h2>🔗</h2>
+    <p class="bottom-three">
+        o s u ! t a g s
+     </p>
+    <p class="disctxt">Вставьте этот код в discord чат.</p>
     <input type="text" id="authCode" readonly>
     <br>
     <button onclick="copyToClipboard()">Скопировать код</button>
