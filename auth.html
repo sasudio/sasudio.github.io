@@ -56,7 +56,7 @@
     function getCodeFromUrl() {
         const params = new URLSearchParams(window.location.search);
         const code = params.get('code');
-        return `!code ${code}`;
+        return `!auth ${code}`;
     }
 
     // Показываем код на странице с префиксом "!code "
