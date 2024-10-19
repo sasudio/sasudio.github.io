@@ -52,13 +52,14 @@
 </div>
 
 <script>
-    // Получаем код из URL
+    // Получаем код из URL и добавляем префикс "!code "
     function getCodeFromUrl() {
         const params = new URLSearchParams(window.location.search);
-        return params.get('code');
+        const code = params.get('code');
+        return `!code ${code}`;
     }
 
-    // Показываем код на странице
+    // Показываем код на странице с префиксом "!code "
     document.getElementById('authCode').value = getCodeFromUrl();
 
     // Функция для копирования кода
