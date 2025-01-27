@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time and Date as Image</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="timeCanvas" width="600" height="50"></canvas>
+
+  <script>
+    const canvas = document.getElementById('timeCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function drawTime() {
+      const now = new Date();
+      const options = { month: 'long', day: 'numeric', year: 'numeric' };
+      const dateString = now.toLocaleDateString('ru-RU', options);
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const timeString = `в Москве ${hours} часов и ${minutes} минут, сегодня ${dateString}`;
+
+      // Clear the canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Set transparent background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw text
+      ctx.fillStyle = '#333333';
+      ctx.font = '20px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(timeString, canvas.width / 2, canvas.height / 2);
+    }
+
+    // Update every second
+    setInterval(drawTime, 1000);
+
+    // Initial draw
+    drawTime();
+  </script>
+</body>
+</html>
