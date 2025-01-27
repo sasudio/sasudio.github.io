@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const now = new Date();
+            const hour = now.getHours();
+
+            if (hour < 12) {
+                // До 12 часов
+                window.location.href = "jpg.jpg";
+            } else {
+                // После 12 часов
+                window.location.href = "jpg.jpg";
+            }
+        });
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
